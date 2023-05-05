@@ -6,12 +6,14 @@ import { Info } from "./components/Info";
 import { Contact } from "./components/Contact";
 import { ContactPlus } from "./components/ContactPlus";
 
-import { Route, Navigate, Routes } from "react-router-dom";
+import { Route, Navigate, Routes, useNavigate } from "react-router-dom";
 import { Login } from "./components/Login";
 
 const App = () => {
   const token = JSON.parse(localStorage.getItem("token"));
-  console.log(token, typeof token);
+  // console.log(token, typeof token);
+  const navigate = useNavigate();
+
   return (
     <div>
       <Routes>
@@ -27,12 +29,16 @@ const App = () => {
           <Route
             path={"/Info"}
             element={token ? <Info /> : <Navigate to="/Login" />}
-          />
+          /> 
           <Route path={"/Login"} element={<Login />} />
 
           <Route path={"*"} element={<h1>Not Found</h1>} />
         </Route>
       </Routes>
+        <>
+          <button onClick={() => navigate(1)}>ForWard</button>
+          <button onClick={() => navigate(-1)}>BackWard</button>
+        </>
     </div>
   );
 };

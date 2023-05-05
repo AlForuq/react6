@@ -7,11 +7,17 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: white;
+  .active {
+    /* color: yellow; */
+  }
 `;
 
 export const LinkComp = styled(NavLink)`
   font-size: 25px;
   text-decoration: none;
-  color: ${({ active }) => (active === "active" ? "red" : "white")};
+  color: white;
+  :active {
+    color: blue;
+  }
+  color: ${({ actv }) => (actv === "Active" ? "red" : "white")};
 `;
